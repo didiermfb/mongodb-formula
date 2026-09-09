@@ -1,0 +1,28 @@
+# yamllint disable rule:indentation rule:line-length
+# Debian-11
+---
+values:
+  added_in_defaults: defaults_value
+  map_jinja:
+    sources:
+    - Y:G@osarch
+    - Y:G@os_family
+    - Y:G@os
+    - Y:G@osfinger
+    - C@mongodb:lookup
+    - C@mongodb
+    - Y:G@id
+  mongod:
+    config:
+      storage:
+        dbPath: /var/lib/mongodb
+    config_file: /etc/mongod.conf
+  pkg:
+    name: mongodb-org-database
+  repo:
+    gpgkey: https://www.mongodb.org/static/pgp/server-8.0.asc
+    name: deb [arch=amd64,arm64] http://repo.mongodb.org/apt/debian bookworm/mongodb-org/8.0 main
+  rootgroup: root
+  service:
+    name: mongod
+  winner: defaults
